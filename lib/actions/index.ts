@@ -20,7 +20,7 @@ export async function scrapeAndStoreProduct(productUrl: string) {
 
     let product = scrapedProduct;
 
-    const existingProduct = await Product.findOne({ url: scrapedProduct.url });
+    const existingProduct = await Product.findOne({ title: scrapedProduct.title });
 
     if(existingProduct) {
       const updatedPriceHistory: any = [
