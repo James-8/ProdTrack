@@ -1,6 +1,11 @@
+
+//  "use client"
 import Modal from "@/components/Modal";
 import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
+
+
+
 import { getProductById, getSimilarProducts } from "@/lib/actions"
 import { formatNumber } from "@/lib/utils";
 import { Product } from "@/types";
@@ -8,16 +13,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-type Props = {
-  params: { id: string }
-}
+// import { useEffect } from "react"
+// import { Chart } from "chart.js";
 
-const ProductDetails = async ({ params: { id } }: Props) => {
-  const product: Product = await getProductById(id);
 
-  if(!product) redirect('/')
 
-  const similarProducts = await getSimilarProducts(id);
+
+
+
+
+ type Props = {
+   params: { id: string }
+ }
+
+ const ProductDetails = async ({ params: { id } }: Props) => {
+   const product: Product = await getProductById(id);
+
+   if(!product) redirect('/')
+
+   const similarProducts = await getSimilarProducts(id);
+
+
+   const examplePriceHistory = [
+    { price: 100, date: new Date('2024-01-01') },
+    { price: 120, date: new Date('2024-01-02') },
+    { price: 110, date: new Date('2024-01-03') },
+    // Add more entries as needed
+  ];
+
+
 
   return (
     <div className="product-container">
@@ -178,6 +202,15 @@ const ProductDetails = async ({ params: { id } }: Props) => {
             Buy Now
           </Link>
         </button>
+
+        {/* <PriceHistoryGraph title="Product A" priceHistory={examplePriceHistory} /> */}
+
+        {/* <h1 className="w-[110px] mx-auto mt-10 text-xl font-semibold capitalize ">line Chart</h1>
+      <div className="w-[1100px] h-screen flex mx-auto my-auto">
+        <div className='border border-gray-400 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl'>
+          <canvas id='myChart'></canvas>
+        </div>
+      </div> */}
       </div>
 
       {similarProducts && similarProducts?.length > 0 && (
