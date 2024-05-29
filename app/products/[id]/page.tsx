@@ -109,10 +109,10 @@ import { redirect } from "next/navigation";
           <div className="product-info">
             <div className="flex flex-col gap-2">
               <p className="text-[34px] text-secondary font-bold">
-                {product.currency} {formatNumber(product.currentPrice)}
+                {product.currency} {product.currentPrice}
               </p>
               <p className="text-[21px] text-black opacity-50 line-through">
-                {product.currency} {formatNumber(product.originalPrice)}
+                {product.currency} {product.originalPrice}
               </p>
             </div>
 
@@ -155,7 +155,7 @@ import { redirect } from "next/navigation";
               <PriceInfoCard 
                 title="Current Price"
                 iconSrc="/assets/icons/price-tag.svg"
-                value={`${product.currency} ${formatNumber(product.currentPrice)}`}
+                value={`${product.currency} ${product.currentPrice}`}
               />
               <PriceInfoCard 
                 title="Average Price"
@@ -165,12 +165,12 @@ import { redirect } from "next/navigation";
               <PriceInfoCard 
                 title="Highest Price"
                 iconSrc="/assets/icons/arrow-up.svg"
-                value={`${product.currency} ${formatNumber(product.highestPrice)}`}
+                value={`${product.currency} ${product.highestPrice}`}
               />
               <PriceInfoCard 
                 title="Lowest Price"
                 iconSrc="/assets/icons/arrow-down.svg"
-                value={`${product.currency} ${formatNumber(product.lowestPrice)}`}
+                value={`${product.currency} ${product.lowestPrice}`}
               />
             </div>
           </div>
